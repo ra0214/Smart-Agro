@@ -1,0 +1,48 @@
+.nivel-main {
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: #d9f7c9;
+}
+
+.nivel-card {
+  width: 100%;
+  max-width: 980px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.page-title {
+  font-weight: 950;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #1d3557;
+  margin-bottom: 0.8rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2.5rem 0;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.energy-line {
+  text-align: center;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.2rem;
+}
+
+.energy-value {
+  font-weight: 950;
+}
+

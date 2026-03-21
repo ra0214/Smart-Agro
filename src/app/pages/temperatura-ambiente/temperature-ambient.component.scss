@@ -1,0 +1,88 @@
+.ambient-main {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ambient-card {
+  width: 100%;
+  max-width: 980px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e6eef8;
+  padding: 1.25rem;
+}
+
+.page-title {
+  font-weight: 950;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #1d3557;
+  margin-bottom: 1rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2.5rem 0;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.top-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.stats {
+  background: #f8fbff;
+  border: 1px solid #e6eef8;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.stat-row {
+  margin-bottom: 0.9rem;
+}
+
+.stat-row:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #2f3b52;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+.stat-time {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #4b5563;
+  margin-left: 0.4rem;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 0.65fr 1.35fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: start;
+}
+
+.thermometers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.25rem 0;
+}
+

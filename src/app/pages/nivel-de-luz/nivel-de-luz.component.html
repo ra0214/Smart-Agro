@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<main class="nivel-main">
+  <div class="nivel-card">
+    <div class="page-title">Nivel de luz</div>
+
+    <div *ngIf="loading" class="loading">Cargando datos...</div>
+
+    <ng-container *ngIf="!loading && report">
+      <section class="charts">
+        <div class="energy-line">
+          Energía total recibida:
+          <span class="energy-value">{{ report.solarIntensity.totalEnergyReceived | number:'1.0-0' }}</span>
+        </div>
+
+        <app-solar-intensity-chart
+          [maxScale]="report.solarIntensity.maxScale"
+          [linePoints]="report.solarIntensity.linePoints"
+        ></app-solar-intensity-chart>
+
+        <app-radiation-trend-chart [points]="report.radiationTrend7Days"></app-radiation-trend-chart>
+      </section>
+    </ng-container>
+  </div>
+</main>
+

@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<main class="ambient-main">
+  <div class="ambient-card">
+    <div class="page-title">Temperatura ambiente</div>
+
+    <div *ngIf="loading" class="loading">Cargando datos...</div>
+
+    <ng-container *ngIf="!loading && report && stats">
+      <section class="top-grid">
+        <div class="line-chart-wrap">
+          <app-temperature-line-chart
+            [points]="report.daily"
+            [maxTotalMinutes]="stats.maxTotalMinutes"
+            [minTotalMinutes]="stats.minTotalMinutes"
+          ></app-temperature-line-chart>
+        </div>
+
+        <aside class="stats">
+          <div class="stat-row">
+            <div class="stat-label">Máxima</div>
+            <div class="stat-value">
+              {{ stats.maxTemp | number: '1.1-1' }}°C
+              <span class="stat-time">({{ stats.maxTimeLabel }})</span>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-label">Mínima</div>
+            <div class="stat-value">
+              {{ stats.minTemp | number: '1.1-1' }}°C
+              <span class="stat-time">({{ stats.minTimeLabel }})</span>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-label">Promedio diario</div>
+            <div class="stat-value">{{ stats.avgTemp | number: '1.1-1' }}°C</div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="thermometers">
+          <app-thermometer
+            [temperature]="stats.maxTemp"
+            label="Máxima"
+            [minRange]="0"
+            [maxRange]="35"
+            color="#e74c3c"
+          ></app-thermometer>
+
+          <app-thermometer
+            [temperature]="stats.minTemp"
+            label="Mínima"
+            [minRange]="0"
+            [maxRange]="35"
+            color="#56ccf2"
+          ></app-thermometer>
+        </div>
+
+        <div class="trend-wrap">
+          <app-temperature-trend-chart [points]="report.trend7Days"></app-temperature-trend-chart>
+        </div>
+      </section>
+    </ng-container>
+  </div>
+</main>
+

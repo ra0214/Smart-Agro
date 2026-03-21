@@ -1,0 +1,12 @@
+/* Global styles */
+body {
+  margin: 0;
+  background-color: #CCF9C7;
+  overflow-x: hidden;
+}
+
+/* Asegura que el contenedor ocupe la pantalla completa y herede el color. */
+:root,
+app-root {
+  min-height: 100vh;
+}
