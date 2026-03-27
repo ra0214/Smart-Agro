@@ -1,0 +1,183 @@
+.humedad-main {
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: #d9f7c9;
+}
+
+.humedad-content {
+  width: 100%;
+  max-width: 980px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.page-title {
+  font-weight: 950;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #1d3557;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  text-align: center;
+  color: #111827;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 0 0 1rem;
+}
+
+.uptake-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.chart-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.top-chart-figure {
+  width: 100%;
+  background: #ffffff;
+  border: 3px solid #ffffff;
+  box-sizing: border-box;
+}
+
+.top-chart-title {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2e8b7e;
+  padding: 0.35rem 0.35rem 0.2rem;
+}
+
+.top-chart-svg {
+  width: 100%;
+  display: block;
+  height: 290px;
+}
+
+.top-chart-svg .axis {
+  stroke: #1f2937;
+  stroke-width: 2.2;
+}
+
+.top-chart-svg .grid {
+  stroke: #d7d7d7;
+  stroke-width: 1;
+}
+
+.top-chart-svg .uptake-line {
+  fill: none;
+  stroke: #2a2a2a;
+  stroke-width: 4.2;
+}
+
+.top-chart-svg .pie-outline {
+  fill: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+.top-chart-svg .pie-slice-a {
+  fill: #6d5dc6;
+  stroke: #ffffff;
+  stroke-width: 0.9;
+}
+
+.top-chart-svg .pie-slice-b {
+  fill: #4fb98d;
+  stroke: #ffffff;
+  stroke-width: 0.9;
+}
+
+.top-chart-svg .pie-slice-c {
+  fill: #f2cd5d;
+  stroke: #ffffff;
+  stroke-width: 0.9;
+}
+
+.top-chart-svg .plants path {
+  fill: none;
+  stroke: #6cad5f;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+}
+
+.top-chart-svg .axis-label {
+  fill: #2a2a2a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-column {
+  min-width: 190px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.6;
+  padding-top: 0.4rem;
+}
+
+.status-column p {
+  margin: 0 0 0.1rem;
+}
+
+.forecast-title {
+  margin-top: 0.6rem;
+}
+
+.forecast-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.forecast-image {
+  width: 100%;
+}
+
+.loading {
+  text-align: center;
+  padding: 2.5rem 0;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+@media (max-width: 900px) {
+  .uptake-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chart-image {
+    min-width: 0;
+  }
+
+  .status-column {
+    min-width: 0;
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 0;
+  }
+
+  .top-chart-svg {
+    height: 240px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,113 @@
+<app-header></app-header>
+
+<main class="humedad-main">
+  <section class="humedad-content" *ngIf="!loading && report; else loadingState">
+    <div class="page-title">Húmedad del suelo</div>
+
+    <div class="section-title">Máxima / Mínima</div>
+
+    <section class="uptake-row" aria-label="Resumen de humedad del suelo">
+      <div class="chart-image" aria-label="Gráfica de absorción de agua y zona estimada de raíz">
+        <div class="top-chart-figure">
+          <div class="top-chart-title">Corn Water Uptake and Estimated Root Zone</div>
+
+          <svg class="top-chart-svg" viewBox="0 0 700 420" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="0" y="0" width="700" height="420" fill="#f8f8f8"></rect>
+
+            <line x1="55" y1="355" x2="655" y2="355" class="axis"></line>
+            <line x1="55" y1="45" x2="55" y2="355" class="axis"></line>
+
+            <line x1="55" y1="305" x2="655" y2="305" class="grid"></line>
+            <line x1="55" y1="255" x2="655" y2="255" class="grid"></line>
+            <line x1="55" y1="205" x2="655" y2="205" class="grid"></line>
+            <line x1="55" y1="155" x2="655" y2="155" class="grid"></line>
+            <line x1="55" y1="105" x2="655" y2="105" class="grid"></line>
+
+            <path d="M65,352 C140,350 180,330 220,285 C270,230 330,165 370,140 C430,102 490,120 560,246 C590,303 615,336 642,349" class="uptake-line"></path>
+
+            <g class="pie-chart" transform="translate(165 238)">
+              <circle cx="0" cy="0" r="19" class="pie-outline"></circle>
+              <path d="M0 0 L0 -19 A19 19 0 0 1 17.85 6.5 Z" class="pie-slice-a"></path>
+              <path d="M0 0 L17.85 6.5 A19 19 0 0 1 -18.71 3.3 Z" class="pie-slice-b"></path>
+              <path d="M0 0 L-18.71 3.3 A19 19 0 0 1 0 -19 Z" class="pie-slice-c"></path>
+            </g>
+
+            <g class="pie-chart" transform="translate(245 190) scale(1.03)">
+              <circle cx="0" cy="0" r="19" class="pie-outline"></circle>
+              <path d="M0 0 L0 -19 A19 19 0 0 1 17.85 6.5 Z" class="pie-slice-b"></path>
+              <path d="M0 0 L17.85 6.5 A19 19 0 0 1 -18.71 3.3 Z" class="pie-slice-c"></path>
+              <path d="M0 0 L-18.71 3.3 A19 19 0 0 1 0 -19 Z" class="pie-slice-a"></path>
+            </g>
+
+            <g class="pie-chart" transform="translate(325 142)">
+              <circle cx="0" cy="0" r="19" class="pie-outline"></circle>
+              <path d="M0 0 L0 -19 A19 19 0 0 1 17.85 6.5 Z" class="pie-slice-c"></path>
+              <path d="M0 0 L17.85 6.5 A19 19 0 0 1 -18.71 3.3 Z" class="pie-slice-a"></path>
+              <path d="M0 0 L-18.71 3.3 A19 19 0 0 1 0 -19 Z" class="pie-slice-b"></path>
+            </g>
+
+            <g class="pie-chart" transform="translate(405 110) scale(0.98)">
+              <circle cx="0" cy="0" r="19" class="pie-outline"></circle>
+              <path d="M0 0 L0 -19 A19 19 0 0 1 17.85 6.5 Z" class="pie-slice-a"></path>
+              <path d="M0 0 L17.85 6.5 A19 19 0 0 1 -18.71 3.3 Z" class="pie-slice-c"></path>
+              <path d="M0 0 L-18.71 3.3 A19 19 0 0 1 0 -19 Z" class="pie-slice-b"></path>
+            </g>
+
+            <g class="pie-chart" transform="translate(495 127) scale(0.96)">
+              <circle cx="0" cy="0" r="19" class="pie-outline"></circle>
+              <path d="M0 0 L0 -19 A19 19 0 0 1 17.85 6.5 Z" class="pie-slice-b"></path>
+              <path d="M0 0 L17.85 6.5 A19 19 0 0 1 -18.71 3.3 Z" class="pie-slice-a"></path>
+              <path d="M0 0 L-18.71 3.3 A19 19 0 0 1 0 -19 Z" class="pie-slice-c"></path>
+            </g>
+
+            <g class="plants">
+              <path d="M120,353 C122,334 121,323 119,308" />
+              <path d="M120,336 C110,326 107,316 106,302" />
+              <path d="M120,334 C130,325 133,314 134,301" />
+
+              <path d="M215,353 C217,327 216,314 214,292" />
+              <path d="M215,333 C201,321 198,307 197,289" />
+              <path d="M215,329 C230,316 234,302 236,286" />
+
+              <path d="M315,353 C317,322 316,304 313,274" />
+              <path d="M315,329 C297,315 292,298 291,274" />
+              <path d="M315,322 C334,307 339,289 341,268" />
+
+              <path d="M410,353 C412,320 411,296 408,257" />
+              <path d="M410,323 C388,308 381,287 378,256" />
+              <path d="M410,314 C435,297 443,275 447,249" />
+
+              <path d="M507,353 C510,318 509,294 506,252" />
+              <path d="M507,321 C486,305 479,282 476,250" />
+              <path d="M507,311 C531,294 540,271 544,244" />
+            </g>
+
+            <text x="355" y="395" text-anchor="middle" class="axis-label">Corn Plant Growth Stage</text>
+            <text x="18" y="212" transform="rotate(-90 18 212)" text-anchor="middle" class="axis-label">Corn water uptake (mm/day)</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="status-column">
+        <p>Seco: 29%</p>
+        <p>Normal: 45%</p>
+        <p>Muy mojado: 58%</p>
+      </div>
+    </section>
+
+    <div class="section-title forecast-title">Humedad vs Pronóstico</div>
+
+    <section class="forecast-wrap">
+      <div class="forecast-image" aria-label="Tendencia semanal de humedad">
+        <app-humedad-trend-chart [points]="report.trend7Days"></app-humedad-trend-chart>
+      </div>
+    </section>
+  </section>
+
+  <ng-template #loadingState>
+    <section class="humedad-content">
+      <h1 class="page-title">Húmedad del suelo</h1>
+      <p class="loading">Cargando datos...</p>
+    </section>
+  </ng-template>
+</main>
