@@ -20,6 +20,8 @@ import { SolarIntensityChartComponent } from './pages/nivel-de-luz/components/so
 import { RadiationTrendChartComponent } from './pages/nivel-de-luz/components/radiation-trend/radiation-trend-chart.component';
 import { NIVEL_DE_LUZ_REPOSITORY } from './pages/nivel-de-luz/data/nivel-de-luz.repository';
 import { MockNivelDeLuzRepository } from './pages/nivel-de-luz/data/mock-nivel-de-luz.repository';
+import { HUMEDAD_SUELO_REPOSITORY } from './pages/humedad-suelo/data/humedad-suelo.repository';
+import { MockHumedadSueloRepository } from './pages/humedad-suelo/data/mock-humedad-suelo.repository';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,9 @@ import { MockNivelDeLuzRepository } from './pages/nivel-de-luz/data/mock-nivel-d
     HumedadSueloComponent,
     HumedadGaugeComponent,
     HumedadTrendChartComponent,
+    HumedadAireComponent,
+    HumedadRelativaChartComponent,
+    PuntoRocioResumenComponent,
     SolarIntensityChartComponent,
     RadiationTrendChartComponent
   ],
@@ -50,6 +55,10 @@ import { MockNivelDeLuzRepository } from './pages/nivel-de-luz/data/mock-nivel-d
     {
       provide: NIVEL_DE_LUZ_REPOSITORY,
       useClass: MockNivelDeLuzRepository
+    },
+    {
+      provide: HUMEDAD_SUELO_REPOSITORY,
+      useClass: MockHumedadSueloRepository
     }
   ],
   bootstrap: [AppComponent]
