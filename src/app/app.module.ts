@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +20,6 @@ import { SolarIntensityChartComponent } from './pages/nivel-de-luz/components/so
 import { RadiationTrendChartComponent } from './pages/nivel-de-luz/components/radiation-trend/radiation-trend-chart.component';
 import { NIVEL_DE_LUZ_REPOSITORY } from './pages/nivel-de-luz/data/nivel-de-luz.repository';
 import { MockNivelDeLuzRepository } from './pages/nivel-de-luz/data/mock-nivel-de-luz.repository';
-import { HUMEDAD_SUELO_REPOSITORY } from './pages/humedad-suelo/data/humedad-suelo.repository';
-import { MockHumedadSueloRepository } from './pages/humedad-suelo/data/mock-humedad-suelo.repository';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,8 @@ import { MockHumedadSueloRepository } from './pages/humedad-suelo/data/mock-hume
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -50,10 +50,6 @@ import { MockHumedadSueloRepository } from './pages/humedad-suelo/data/mock-hume
     {
       provide: NIVEL_DE_LUZ_REPOSITORY,
       useClass: MockNivelDeLuzRepository
-    },
-    {
-      provide: HUMEDAD_SUELO_REPOSITORY,
-      useClass: MockHumedadSueloRepository
     }
   ],
   bootstrap: [AppComponent]
