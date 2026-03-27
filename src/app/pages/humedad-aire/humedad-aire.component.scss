@@ -1,0 +1,59 @@
+.humedad-aire-main {
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: #d9f7c9;
+}
+
+.humedad-aire-content {
+  width: 100%;
+  max-width: 980px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.page-title {
+  font-weight: 900;
+  font-size: 2.2rem;
+  text-align: center;
+  color: #1d3557;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.section-title {
+  text-align: center;
+  color: #111827;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+}
+
+.avg-note {
+  text-align: center;
+  margin-top: 0.9rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.loading {
+  text-align: center;
+  padding: 2.2rem 0;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+@media (max-width: 520px) {
+  .humedad-aire-main {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+}

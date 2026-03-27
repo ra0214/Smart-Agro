@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<main class="humedad-aire-main">
+  <section class="humedad-aire-content" *ngIf="!loading && report; else loadingState">
+    <h1 class="page-title">Húmedad del aire</h1>
+    <h2 class="section-title">Húmedad relativa de aire y punto de rocío</h2>
+
+    <app-punto-rocio-resumen
+      [relativeHumidity]="report.currentRelativeHumidity"
+      [dewPoint]="report.currentDewPoint"
+    ></app-punto-rocio-resumen>
+
+    <app-humedad-relativa-chart
+      [relativeHumiditySeries]="report.relativeHumiditySeries"
+      [dewPointSeries]="report.dewPointSeries"
+      [labels]="report.labels"
+    ></app-humedad-relativa-chart>
+
+    <p class="avg-note">Promedio de humedad relativa: {{ promedioHumedad | number:'1.0-0' }}%</p>
+  </section>
+
+  <ng-template #loadingState>
+    <section class="humedad-aire-content">
+      <h1 class="page-title">Húmedad del aire</h1>
+      <p class="loading">Cargando datos...</p>
+    </section>
+  </ng-template>
+</main>
