@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { SolarIntensityChartComponent } from './pages/nivel-de-luz/components/so
 import { RadiationTrendChartComponent } from './pages/nivel-de-luz/components/radiation-trend/radiation-trend-chart.component';
 import { NIVEL_DE_LUZ_REPOSITORY } from './pages/nivel-de-luz/data/nivel-de-luz.repository';
 import { MockNivelDeLuzRepository } from './pages/nivel-de-luz/data/mock-nivel-de-luz.repository';
+import { LOGIN_REPOSITORY } from './pages/login/data/login.repository';
+import { MockLoginRepository } from './pages/login/data/mock-login.repository';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { MockNivelDeLuzRepository } from './pages/nivel-de-luz/data/mock-nivel-d
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -42,6 +46,10 @@ import { MockNivelDeLuzRepository } from './pages/nivel-de-luz/data/mock-nivel-d
     {
       provide: NIVEL_DE_LUZ_REPOSITORY,
       useClass: MockNivelDeLuzRepository
+    },
+    {
+      provide: LOGIN_REPOSITORY,
+      useClass: MockLoginRepository
     }
   ],
   bootstrap: [AppComponent]
