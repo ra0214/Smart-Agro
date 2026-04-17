@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { LOGIN_REPOSITORY, LoginRepository } from './data/login.repository';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private authService: AuthService,
     @Inject(LOGIN_REPOSITORY)
     private readonly authRepo: LoginRepository
   ) {
@@ -50,7 +52,8 @@ export class LoginComponent implements OnDestroy {
 
     this.sub = this.authRepo.authenticate(credentials).subscribe({
       next: (response) => {
-        if (response.success) {
+        if (response.success && response.user) {
+          this.authService.login(response.user);
           this.router.navigate(['/home']);
         } else {
           this.error = response.error || 'Error de autenticación';
