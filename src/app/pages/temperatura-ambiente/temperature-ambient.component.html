@@ -2,9 +2,13 @@
 
 <main class="ambient-main">
   <div class="ambient-card">
-    <div class="page-title">Temperatura ambiente</div>
 
-    <div *ngIf="loading" class="loading">Cargando datos...</div>
+    <header class="page-header">
+      <h1 class="page-title">Temperatura ambiente</h1>
+      <p class="page-subtitle">Monitoreo en tiempo real · Actualización cada 8 s</p>
+    </header>
+
+    <div *ngIf="loading" class="loading loading-spinner">Cargando datos...</div>
 
     <ng-container *ngIf="!loading && report && stats">
       <section class="top-grid">
@@ -18,18 +22,18 @@
 
         <aside class="stats">
           <div class="stat-row">
-            <div class="stat-label">Máxima</div>
+            <div class="stat-label">Máxima del día</div>
             <div class="stat-value">
               {{ stats.maxTemp | number: '1.1-1' }}°C
-              <span class="stat-time">({{ stats.maxTimeLabel }})</span>
+              <span class="stat-time">{{ stats.maxTimeLabel }}</span>
             </div>
           </div>
 
           <div class="stat-row">
-            <div class="stat-label">Mínima</div>
+            <div class="stat-label">Mínima del día</div>
             <div class="stat-value">
               {{ stats.minTemp | number: '1.1-1' }}°C
-              <span class="stat-time">({{ stats.minTimeLabel }})</span>
+              <span class="stat-time">{{ stats.minTimeLabel }}</span>
             </div>
           </div>
 
@@ -39,6 +43,8 @@
           </div>
         </aside>
       </section>
+
+      <div class="section-label">Termómetros y tendencia semanal</div>
 
       <section class="bottom-grid">
         <div class="thermometers">
@@ -64,6 +70,6 @@
         </div>
       </section>
     </ng-container>
+
   </div>
 </main>
-

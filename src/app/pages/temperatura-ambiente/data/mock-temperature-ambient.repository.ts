@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { Observable, timer } from 'rxjs';
+import { switchMap, delay } from 'rxjs/operators';
+import { of } from 'rxjs';
 import {
   TemperatureAmbientReport,
   TemperatureHourlyPoint,
@@ -22,13 +24,13 @@ function randIntBetween(min: number, max: number): number {
 @Injectable()
 export class MockTemperatureAmbientRepository {
   getAmbientTemperatureReport(): Observable<TemperatureAmbientReport> {
-    const daily = this.generateDailyPoints();
-    const trend7Days = this.generateTrend7Days();
-    return of(
-      normalizeAmbientReport({
-        daily,
-        trend7Days
-      })
+    return timer(0, 8000).pipe(
+      switchMap(() =>
+        of(normalizeAmbientReport({
+          daily: this.generateDailyPoints(),
+          trend7Days: this.generateTrend7Days()
+        })).pipe(delay(300))
+      )
     );
   }
 

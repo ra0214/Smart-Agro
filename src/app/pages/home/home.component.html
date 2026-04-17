@@ -1,6 +1,7 @@
 <app-header></app-header>
 <main class="container">
-  <h2>Menú</h2>
+  <h2>Panel de monitoreo</h2>
+  <p class="home-subtitle">Selecciona una variable para ver su detalle en tiempo real</p>
   <div class="card-grid">
     <a class="card card-link" [routerLink]="['/temperatura-ambiente']">
       <img src="assets/Temperatura%20Ambiente.png" alt="Temperatura Ambiente">
@@ -11,12 +12,12 @@
       <p>Nivel de luz</p>
     </a>
     <a class="card card-link" [routerLink]="['/humedad-suelo']">
-      <img src="assets/humedad_suelo.png" alt="Húmedad del suelo">
-      <p>Húmedad del suelo</p>
+      <img src="assets/humedad_suelo.png" alt="Humedad del Suelo">
+      <p>Humedad del suelo</p>
     </a>
-    <div class="card">
-      <img src="assets/logo.jpg" alt="Húmedad del aire">
-      <p>Húmedad del aire</p>
+    <a class="card card-link" [routerLink]="['/humedad-aire']">
+      <img src="assets/humedad_aire.png" alt="Humedad del Aire">
+      <p>Humedad del aire</p>
     </a>
   </div>
 </main>

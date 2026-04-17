@@ -18,10 +18,32 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [
     `
-      .summary-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; margin-bottom: 0.8rem; }
-      .summary-item { background: #ffffff; border-radius: 8px; border: 1px solid #d7e8d0; padding: 0.7rem; text-align: center; }
-      .summary-item span { display: block; font-size: 0.82rem; color: #374151; margin-bottom: 0.35rem; font-weight: 700; }
-      .summary-item strong { font-size: 1.15rem; color: #123a6a; }
+      .summary-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; margin-bottom: 1rem; }
+      .summary-item {
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.07);
+        padding: 1rem 0.9rem;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        transition: box-shadow 0.2s ease;
+      }
+      .summary-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+      .summary-item span {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #6b7280;
+        margin-bottom: 0.45rem;
+      }
+      .summary-item strong {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #1d3557;
+      }
       @media (max-width: 640px) {
         .summary-wrap { grid-template-columns: 1fr; }
       }

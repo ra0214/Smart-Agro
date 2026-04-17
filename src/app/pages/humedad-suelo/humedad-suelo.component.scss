@@ -1,6 +1,6 @@
 .humedad-main {
-  padding: 2rem;
-  min-height: 100vh;
+  padding: 1.75rem 1.5rem 3rem;
+  min-height: calc(100vh - 74px);
   display: flex;
   justify-content: center;
   background: #d9f7c9;
@@ -9,33 +9,94 @@
 .humedad-content {
   width: 100%;
   max-width: 980px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 14px;
-  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: 1.75rem 1.75rem 2rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  animation: fadeInUp 0.4s ease both;
+}
+
+/* ---------- Encabezado de página ---------- */
+.page-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .page-title {
-  font-weight: 950;
-  font-size: 1.8rem;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.025em;
   text-align: center;
   color: #1d3557;
-  margin-bottom: 0.8rem;
+  margin: 0 0 0.3rem;
 }
 
+.page-subtitle {
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #4a7c59;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ---------- Etiquetas de sección ---------- */
 .section-title {
   text-align: center;
-  color: #111827;
-  font-size: 1.8rem;
-  font-weight: 900;
-  margin: 0 0 1rem;
+  color: #374151;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.85rem;
 }
 
+/* ---------- Estado de resumen (Seco / Normal / Mojado) ---------- */
+.status-column {
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.4rem;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+}
+
+.status-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-value {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1d3557;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Gráfica de absorción de agua ---------- */
 .uptake-row {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .chart-image {
@@ -46,16 +107,19 @@
 .top-chart-figure {
   width: 100%;
   background: #ffffff;
-  border: 3px solid #ffffff;
-  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .top-chart-title {
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: #2e8b7e;
-  padding: 0.35rem 0.35rem 0.2rem;
+  padding: 0.6rem 0.5rem 0.3rem;
+  letter-spacing: 0.01em;
 }
 
 .top-chart-svg {
@@ -117,21 +181,15 @@
   font-weight: 600;
 }
 
-.status-column {
-  min-width: 190px;
-  font-size: 1.05rem;
-  font-weight: 900;
-  color: #111827;
-  line-height: 1.6;
-  padding-top: 0.4rem;
+/* ---------- Gauge section ---------- */
+.gauge-wrap-section {
+  max-width: 400px;
+  margin: 0 auto 1.25rem;
 }
 
-.status-column p {
-  margin: 0 0 0.1rem;
-}
-
+/* ---------- Forecast ---------- */
 .forecast-title {
-  margin-top: 0.6rem;
+  margin-top: 0;
 }
 
 .forecast-wrap {
@@ -146,10 +204,12 @@
 .loading {
   text-align: center;
   padding: 2.5rem 0;
-  font-weight: 700;
-  color: #6b7280;
+  font-weight: 600;
+  color: #4a7c59;
+  font-size: 0.9rem;
 }
 
+/* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .uptake-row {
     flex-direction: column;
@@ -162,9 +222,16 @@
 
   .status-column {
     min-width: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .status-item {
+    flex: 1 1 120px;
+    flex-direction: column;
     text-align: center;
-    font-size: 1rem;
-    padding-top: 0;
+    gap: 0.2rem;
   }
 
   .top-chart-svg {
@@ -173,11 +240,11 @@
 }
 
 @media (max-width: 520px) {
-  .page-title {
-    font-size: 1.5rem;
+  .humedad-content {
+    padding: 1.25rem 1rem 1.5rem;
   }
 
-  .section-title {
-    font-size: 1.3rem;
+  .page-title {
+    font-size: 1.35rem;
   }
 }

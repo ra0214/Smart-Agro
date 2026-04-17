@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'temperatura-ambiente', component: TemperatureAmbientComponent },
   { path: 'nivel-de-luz', component: NivelDeLuzComponent },
   { path: 'humedad-suelo', component: HumedadSueloComponent },
+  { path: 'humedad-aire', component: HumedadAireComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

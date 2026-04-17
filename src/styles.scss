@@ -1,12 +1,84 @@
-/* Global styles */
+/* ============================================================
+   Smart-Agro — Global Styles
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ---------- Reset & box model ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
 body {
   margin: 0;
   background-color: #CCF9C7;
   overflow-x: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1a2535;
 }
 
-/* Asegura que el contenedor ocupe la pantalla completa y herede el color. */
 :root,
 app-root {
   min-height: 100vh;
+}
+
+/* ---------- Animaciones globales ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Clase utilitaria de animación */
+.fade-in {
+  animation: fadeInUp 0.4s ease both;
+}
+
+/* ---------- Spinner de carga global ---------- */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 3rem 0;
+  color: #4b7c5e;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.loading-spinner::before {
+  content: '';
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(43, 98, 37, 0.2);
+  border-top-color: #2B6225;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+/* ---------- Separadores decorativos ---------- */
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  margin: 1.25rem 0;
 }

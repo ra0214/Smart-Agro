@@ -2,9 +2,13 @@
 
 <main class="humedad-main">
   <section class="humedad-content" *ngIf="!loading && report; else loadingState">
-    <div class="page-title">Húmedad del suelo</div>
 
-    <div class="section-title">Máxima / Mínima</div>
+    <header class="page-header">
+      <h1 class="page-title">Humedad del suelo</h1>
+      <p class="page-subtitle">Absorción de agua y tendencia semanal · Actualización cada 8 s</p>
+    </header>
+
+    <p class="section-title">Rango del período observado</p>
 
     <section class="uptake-row" aria-label="Resumen de humedad del suelo">
       <div class="chart-image" aria-label="Gráfica de absorción de agua y zona estimada de raíz">
@@ -89,25 +93,47 @@
       </div>
 
       <div class="status-column">
-        <p>Seco: 29%</p>
-        <p>Normal: 45%</p>
-        <p>Muy mojado: 58%</p>
+        <div class="status-item">
+          <span class="status-label">Seco</span>
+          <span class="status-value">{{ report.min }}%</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Normal</span>
+          <span class="status-value">{{ report.current }}%</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Muy mojado</span>
+          <span class="status-value">{{ report.max }}%</span>
+        </div>
       </div>
     </section>
 
-    <div class="section-title forecast-title">Humedad vs Pronóstico</div>
+    <p class="section-title">Indicador actual</p>
+
+    <section class="gauge-wrap-section">
+      <app-humedad-gauge
+        [value]="report.current"
+        [min]="report.min"
+        [max]="report.max"
+      ></app-humedad-gauge>
+    </section>
+
+    <p class="section-title forecast-title">Humedad vs pronóstico semanal</p>
 
     <section class="forecast-wrap">
       <div class="forecast-image" aria-label="Tendencia semanal de humedad">
         <app-humedad-trend-chart [points]="report.trend7Days"></app-humedad-trend-chart>
       </div>
     </section>
+
   </section>
 
   <ng-template #loadingState>
     <section class="humedad-content">
-      <h1 class="page-title">Húmedad del suelo</h1>
-      <p class="loading">Cargando datos...</p>
+      <header class="page-header">
+        <h1 class="page-title">Humedad del suelo</h1>
+      </header>
+      <div class="loading loading-spinner">Cargando datos...</div>
     </section>
   </ng-template>
 </main>

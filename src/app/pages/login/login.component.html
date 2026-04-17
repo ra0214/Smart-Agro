@@ -1,22 +1,56 @@
 <div class="login-page">
   <div class="login-card">
-    <h2>Iniciar sesión</h2>
+
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">Smart Agro</span>
+    </div>
+
+    <h1>Bienvenido</h1>
+    <p class="login-hint">Ingresa tus credenciales para continuar</p>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-      <label for="username">Usuario</label>
-      <input id="username" formControlName="username" type="text" placeholder="Ingresa tu usuario" [disabled]="loading" />
-      <div class="error" *ngIf="submitted && f['username'].invalid">Usuario requerido (mínimo 3 caracteres)</div>
 
-      <label for="password">Contraseña</label>
-      <input id="password" formControlName="password" type="password" placeholder="Ingresa tu contraseña" [disabled]="loading" />
-      <div class="error" *ngIf="submitted && f['password'].invalid">Contraseña requerida (mínimo 4 caracteres)</div>
+      <div class="field-group">
+        <label for="username">Usuario</label>
+        <input
+          id="username"
+          formControlName="username"
+          type="text"
+          placeholder="Ingresa tu usuario"
+          [disabled]="loading"
+          autocomplete="username"
+        />
+        <div class="error" *ngIf="submitted && f['username'].invalid">
+          Usuario requerido (mínimo 3 caracteres)
+        </div>
+      </div>
 
-      <div class="error" *ngIf="error">{{ error }}</div>
+      <div class="field-group">
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          formControlName="password"
+          type="password"
+          placeholder="Ingresa tu contraseña"
+          [disabled]="loading"
+          autocomplete="current-password"
+        />
+        <div class="error" *ngIf="submitted && f['password'].invalid">
+          Contraseña requerida (mínimo 4 caracteres)
+        </div>
+      </div>
 
-      <button type="submit" [disabled]="loading">
+      <div class="error error-global" *ngIf="error">{{ error }}</div>
+
+      <button type="submit" [disabled]="loading" id="btn-login">
         <span *ngIf="!loading">Iniciar sesión</span>
-        <span *ngIf="loading">Autenticando...</span>
+        <span *ngIf="loading" class="btn-loading">
+          <span class="btn-spinner"></span>
+          Autenticando...
+        </span>
       </button>
+
     </form>
   </div>
 

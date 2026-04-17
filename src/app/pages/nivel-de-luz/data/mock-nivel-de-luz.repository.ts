@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, timer } from 'rxjs';
+import { switchMap, delay } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { NivelDeLuzReport, SolarIntensityLinePoint } from '../domain/nivel-de-luz.types';
 
 function clamp(value: number, min: number, max: number): number {
@@ -28,6 +30,12 @@ function normalizeSegments(maxScale: number, segments: { darkness: number; direc
 @Injectable()
 export class MockNivelDeLuzRepository {
   getNivelDeLuzReport(): Observable<NivelDeLuzReport> {
+    return timer(0, 8000).pipe(
+      switchMap(() => of(this.generateReport()).pipe(delay(300)))
+    );
+  }
+
+  private generateReport(): NivelDeLuzReport {
     const maxScale = 100000;
 
     const rawSegments = {
@@ -56,14 +64,13 @@ export class MockNivelDeLuzRepository {
     });
 
     const timeLabels = ['00:00', '04:00', '06:00', '12:00', '18:00', '20:00', '24:00'];
-    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
-    // Genera una curva suave tipo “día” para el gráfico principal (A..G).
+    // Genera una curva suave tipo "día" para el gráfico principal (A..G).
     // Usamos una sinusoide y un poco de ruido, escalada a maxScale.
     const linePoints: SolarIntensityLinePoint[] = timeLabels.map((label, i) => {
       const t = i / (timeLabels.length - 1); // 0..1
 
-      // Pico cerca del “mediodía”.
+      // Pico cerca del "mediodía".
       const peak = Math.sin(Math.PI * t); // 0..1
       const noise = randBetween(-0.07, 0.07);
       const shape = clamp(peak + noise, 0, 1);
@@ -76,7 +83,7 @@ export class MockNivelDeLuzRepository {
       return { timeLabel: label, value };
     });
 
-    return of({
+    return {
       solarIntensity: {
         totalEnergyReceived,
         maxScale,
@@ -84,7 +91,6 @@ export class MockNivelDeLuzRepository {
         segments
       },
       radiationTrend7Days
-    });
+    };
   }
 }
-
